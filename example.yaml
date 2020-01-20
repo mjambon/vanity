@@ -1,0 +1,10 @@
+---
+- term: body
+  def: >
+    the physical part necessary and sufficient for an individual to
+    function.
+- term: head
+  def: >
+    the part of the [body] of animals containing the brain.
+  syn:
+    - heads
