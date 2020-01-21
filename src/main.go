@@ -7,7 +7,11 @@ import (
 	"os"
 
 	"gopkg.in/yaml.v2"
+//	"github.com/biogo/ragel"
 )
+
+//go:generate ragel -Z -G2 -o lexer.go lexer.rl
+//go:generate goyacc parser.y
 
 type YamlDefinition struct {
 	Term string // the term being defined

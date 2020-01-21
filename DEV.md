@@ -61,3 +61,19 @@ Here's how you can convert Yaml to Json and pretty-print it (requires `jq`):
 ```
 $ yq r -j example.yaml | jq
 ```
+
+Lexer
+--
+
+```
+$ apt install ragel
+$ go get github.com/biogo/ragel
+```
+
+Parser
+--
+
+```
+$ go get golang.org/x/tools/cmd/goyacc
+```
+then add `~/go/bin` to your `PATH` environment variable.

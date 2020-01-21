@@ -1,3 +1,7 @@
 .PHONY: build
 build:
-	cd src/dad && go build
+	$(MAKE) -C src build
+
+.PHONY: clean
+clean:
+	git clean -dfX
