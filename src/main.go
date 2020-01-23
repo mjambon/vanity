@@ -1,3 +1,5 @@
+// A program to check and format an acyclic dictionary.
+
 package main
 
 import (
@@ -25,13 +27,13 @@ type DefContents []DefContentsElt
 type EltKind int
 
 const (
-	Defined EltKind = iota
-	Undefined
+	DefinedTerm EltKind = iota
+	Text
 )
 
 type DefContentsElt struct {
-	Elt string
 	EltKind EltKind
+	Elt string
 }
 
 type Definition struct {
@@ -56,16 +58,7 @@ var example = `
 `
 
 func loadYamlFile(data string) (doc *YamlDocument) {
-	err = yaml.Unmarshal([]byte(data), &doc)
-	if err != nil {
-		log.Fatalf("error: %v", err)
-	}
-	return doc
-}
-
-func parseDefContents(data string) (defContents *DefContents) {
-	lex := newLexer([]byte(data))
-	err := yyParse(lex)
+	err := yaml.Unmarshal([]byte(data), &doc)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
@@ -73,11 +66,11 @@ func parseDefContents(data string) (defContents *DefContents) {
 }
 
 func main() {
-	data, err := ioutil.ReadAll(os.Stdin)
+	input, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
 	//doc := loadYamlFile(data)
-	doc := parseDefContents(`hello [world]`)
+	doc := parseDefContents(string(input))
 	fmt.Printf("%v\n", doc)
 }
