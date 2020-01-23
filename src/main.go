@@ -7,11 +7,7 @@ import (
 	"os"
 
 	"gopkg.in/yaml.v2"
-//	"github.com/biogo/ragel"
 )
-
-//go:generate ragel -Z -G2 -o lexer.go lexer.rl
-//go:generate goyacc parser.y
 
 type YamlDefinition struct {
 	Term string // the term being defined
@@ -59,11 +55,7 @@ var example = `
     - heads
 `
 
-func loadYamlFile() (doc *YamlDocument) {
-	data, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		log.Fatalf("error: %v", err)
-	}
+func loadYamlFile(data string) (doc *YamlDocument) {
 	err = yaml.Unmarshal([]byte(data), &doc)
 	if err != nil {
 		log.Fatalf("error: %v", err)
@@ -71,7 +63,21 @@ func loadYamlFile() (doc *YamlDocument) {
 	return doc
 }
 
+func parseDefContents(data string) (defContents *DefContents) {
+	lex := newLexer([]byte(data))
+	err := yyParse(lex)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+	return doc
+}
+
 func main() {
-	doc := loadYamlFile()
+	data, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+	//doc := loadYamlFile(data)
+	doc := parseDefContents(`hello [world]`)
 	fmt.Printf("%v\n", doc)
 }
