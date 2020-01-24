@@ -15,21 +15,53 @@ func getTermId(term string) string {
 
 func outputHtmlDef(def Definition) {
 	term := def.Term
-	termId := getTermId(term)
 	fmt.Printf(`
 <p class="ad-def" name="ad-%s">
   <span class="ad-term">%s</span>:
-  <span class="ad-contents">%s</span>
-</p>
-`,
-		html.EscapeString(termId),
+  <span class="ad-contents">`,
+		html.EscapeString(getTermId(term)),
 		html.EscapeString(term),
-		"",
 	)
+	for _, elt := range def.Contents {
+		if elt.Kind == DefinedTerm {
+			term := elt.Text
+			fmt.Printf(`<a href="#%s" class="ad-term-link">%s</a>`,
+				html.EscapeString(getTermId(term)),
+				html.EscapeString(term),
+			)
+		} else {
+			fmt.Printf(`%s`, html.EscapeString(elt.Text))
+		}
+	}
+	fmt.Printf(`</span>
+</p>
+`)
 }
 
+// Print HTML to be included in a document to stdout.
 func outputHtml(doc []Definition) {
 	for _, def := range doc {
 		outputHtmlDef(def)
 	}
+}
+
+// Print a single HTML page with basic styling.
+func outputHtmlPage(doc []Definition) {
+	fmt.Printf(`<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>definitions</title>
+<style>
+.ad-term {
+  font-weight: bold
+}
+</style>
+</head>
+<body>
+`)
+	outputHtml(doc)
+	fmt.Printf(`
+</body>
+`)
 }

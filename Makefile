@@ -1,10 +1,13 @@
+.PHONY: all
+all: example
+
 .PHONY: build
 build:
 	$(MAKE) -C src build
 
-.PHONY: test
-test: build
-	./bin/ad < example.yml
+.PHONY: example
+example: build
+	./bin/ad < example.yml > example.html
 
 .PHONY: clean
 clean:
