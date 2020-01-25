@@ -1,3 +1,5 @@
+# Build the 'ad' executable and the example using 'make'.
+#
 .PHONY: all
 all: example
 
@@ -7,7 +9,7 @@ build:
 
 .PHONY: example
 example: build
-	./bin/ad < example.yml > example.html
+	$(MAKE) -C example
 
 .PHONY: clean
 clean:

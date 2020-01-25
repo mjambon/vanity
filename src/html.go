@@ -16,8 +16,8 @@ func getTermId(term string) string {
 func outputHtmlDef(def Definition) {
 	term := def.Term
 	fmt.Printf(`
-<p class="ad-def" name="ad-%s">
-  <span class="ad-term">%s</span>:
+<p class="ad-def">
+  <a name="ad-%s"><strong class="ad-term">%s</strong></a>:
   <span class="ad-contents">`,
 		html.EscapeString(getTermId(term)),
 		html.EscapeString(term),
@@ -52,11 +52,6 @@ func outputHtmlPage(doc []Definition) {
 <head>
 <meta charset="utf-8">
 <title>definitions</title>
-<style>
-.ad-term {
-  font-weight: bold
-}
-</style>
 </head>
 <body>
 `)
