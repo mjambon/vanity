@@ -3,8 +3,13 @@
   def: >
     the physical parts necessary and sufficient for an individual to
     function.
+  syn:
+    - bodies
 - term: head
   def: >
     the part of the [body] of animals containing the brain.
   syn:
     - heads
+- term: group
+  def: >-
+    a set of [bodies]

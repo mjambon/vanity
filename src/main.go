@@ -27,7 +27,15 @@ type Definition struct {
 	Synonyms []string
 }
 
-type Dictionary []Definition
+type Dictionary struct {
+	// A lookup table, needed to resolve synonyms into the canonical term,
+	// for linking to a definition.
+	Map map[string]Definition
+
+	// The sequence of definitions in order specified in the original input
+	// file.
+	Sequence []Definition
+}
 
 func main() {
 	data, err := ioutil.ReadAll(os.Stdin)

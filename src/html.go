@@ -13,7 +13,7 @@ func getTermId(term string) string {
 	return hex.EncodeToString([]byte(term))
 }
 
-func outputHtmlDef(def Definition) {
+func outputHtmlDef(defs map[string]Definition, def Definition) {
 	term := def.Term
 	fmt.Printf(`
 <p class="ad-def">
@@ -26,7 +26,7 @@ func outputHtmlDef(def Definition) {
 		if elt.Kind == DefinedTerm {
 			term := elt.Text
 			fmt.Printf(`<a href="#%s" class="ad-term-link">%s</a>`,
-				html.EscapeString(getTermId(term)),
+				html.EscapeString(getTermId(defs[term].Term)),
 				html.EscapeString(term),
 			)
 		} else {
@@ -39,14 +39,14 @@ func outputHtmlDef(def Definition) {
 }
 
 // Print HTML to be included in a document to stdout.
-func outputHtml(doc []Definition) {
+func outputHtml(defs map[string]Definition, doc []Definition) {
 	for _, def := range doc {
-		outputHtmlDef(def)
+		outputHtmlDef(defs, def)
 	}
 }
 
 // Print a single HTML page with basic styling.
-func outputHtmlPage(doc []Definition) {
+func outputHtmlPage(doc Dictionary) {
 	fmt.Printf(`<!doctype html>
 <html lang="en">
 <head>
@@ -55,7 +55,7 @@ func outputHtmlPage(doc []Definition) {
 </head>
 <body>
 `)
-	outputHtml(doc)
+	outputHtml(doc.Map, doc.Sequence)
 	fmt.Printf(`
 </body>
 `)

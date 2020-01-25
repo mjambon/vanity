@@ -73,7 +73,25 @@ func checkDef(defs map[string]Definition, def Definition) {
 	}
 }
 
-func loadData(data string) (doc []Definition) {
+func checkDuplicates(
+	term string,
+	defs map[string]Definition,
+	synonyms []string) {
+
+	_, exists := defs[term]
+	if exists {
+		log.Fatalf("error: duplicate definition for term '%s'", term)
+	}
+	for _, syn := range synonyms {
+		_, exists := defs[syn]
+		if exists {
+			log.Fatalf("error: synonym '%s' of term '%s' is duplicate", syn, term)
+		}
+	}
+}
+
+func loadData(data string) (doc Dictionary) {
+	seq := []Definition{}
 	rawDoc := loadYamlData(data)
 	defs := make(map[string]Definition)
 	for _, rawDef := range rawDoc {
@@ -84,14 +102,20 @@ func loadData(data string) (doc []Definition) {
 			Contents: contents,
 			Synonyms: rawDef.Synonyms,
 		}
-		_, exists := defs[term]
-		if exists {
-			log.Fatalf("error: duplicate definition for term %s", term)
-		}
-		// allow term in its own definition
+		checkDuplicates(term, defs, def.Synonyms)
+
+		// allow term (and its synonyms) in its own definition
 		defs[term] = def
+		for _, syn := range def.Synonyms {
+			defs[syn] = def
+		}
+
 		checkDef(defs, def)
-		doc = append(doc, def)
+		seq = append(seq, def)
+	}
+	doc = Dictionary{
+		Sequence: seq,
+		Map: defs,
 	}
 	return doc
 }
