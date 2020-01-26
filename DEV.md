@@ -72,3 +72,14 @@ Install it as follows:
 ```
 $ go get github.com/jessevdk/go-flags
 ```
+
+Graphviz
+--
+
+We use the `dot` program from [Graphviz](https://www.graphviz.org/) to
+render a graph specified in the dot language into a 2D image.
+
+On Debian or Ubuntu, the required package is named `graphviz`:
+```
+$ sudo apt install graphviz
+```

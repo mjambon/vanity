@@ -50,7 +50,7 @@ func outputHtml(doc Dictionary) {
 func readFile(path string) string {
 	if len(path) != 0 {
 		data, err := ioutil.ReadFile(path)
-		if err == nil {
+		if err != nil {
 			log.Fatalf("error: %v", err)
 		}
 		return string(data)

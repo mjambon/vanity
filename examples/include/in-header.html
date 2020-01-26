@@ -1,0 +1,48 @@
+<!--
+   This is meant to be included in the <head> section of an HTML document.
+-->
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<style>
+/* Use fixed-width body for readability. */
+body {
+  margin: 6.5em auto 2.5em auto;
+  padding: 0.5em 1.5em;
+
+  max-width: 70ex;
+  text-align: left;
+  font-family: 'Droid Serif', serif;
+
+  background-color: white;
+  color: black;
+}
+
+h1, h2, h3, h4 {
+  margin: 1.5em 0em 0.8em 0em;
+  line-height: 1.1;
+}
+
+/* Make page readable on mobile devices. */
+@media only screen and (max-width: 480px) {
+  body {
+    margin: 0px;
+  }
+}
+
+/*
+   The various HTML elements created by 'ad' have their own class
+   name, allowing them to be styled.
+*/
+a.ad-term-link,
+a.ad-term-link:visited {
+  color: black;
+  font-weight: bold;
+}
+
+a.ad-term-link:hover,
+a.ad-term-link:active {
+  color: #f2a;
+}
+</style>

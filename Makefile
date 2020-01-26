@@ -1,15 +1,15 @@
-# Build the 'ad' executable and the example using 'make'.
+# Build the 'ad' executable and the examples using 'make'.
 #
 .PHONY: all
-all: example
+all: examples
 
 .PHONY: build
 build:
 	$(MAKE) -C src build
 
-.PHONY: example
-example: build
-	$(MAKE) -C example
+.PHONY: examples
+examples: build
+	$(MAKE) -C examples
 
 .PHONY: clean
 clean:
