@@ -61,3 +61,14 @@ Here's how you can convert Yaml to Json and pretty-print it (requires `jq`):
 ```
 $ yq r -j example.yaml | jq
 ```
+
+Command-line parsing
+--
+
+We use `go-flags` rather than the built-in `flag` package because it
+allows both short and long options, such as `-s` and `--standalone`.
+Install it as follows:
+
+```
+$ go get github.com/jessevdk/go-flags
+```

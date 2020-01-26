@@ -39,9 +39,9 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 }
 
 // Print HTML to be included in a document to stdout.
-func outputHtml(defs map[string]Definition, doc []Definition) {
-	for _, def := range doc {
-		outputHtmlDef(defs, def)
+func outputHtml(doc Dictionary) {
+	for _, def := range doc.Sequence {
+		outputHtmlDef(doc.Map, def)
 	}
 }
 
@@ -55,7 +55,9 @@ func outputHtmlPage(doc Dictionary) {
 </head>
 <body>
 `)
-	outputHtml(doc.Map, doc.Sequence)
+
+	outputHtml(doc)
+
 	fmt.Printf(`
 </body>
 `)
