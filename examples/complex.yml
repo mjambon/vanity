@@ -11,5 +11,5 @@
   syn:
     - heads
 - term: group
-  def: >-
+  def: >
     a set of [bodies]
