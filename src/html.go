@@ -27,7 +27,7 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 	for _, elt := range def.Contents {
 		if elt.Kind == DefinedTerm {
 			term := elt.Text
-			fmt.Printf(`<a href="#%s" class="ad-term-link">%s</a>`,
+			fmt.Printf(`<a href="#ad-%s" class="ad-term-link">%s</a>`,
 				html.EscapeString(getTermId(defs[term].Term)),
 				html.EscapeString(term),
 			)
