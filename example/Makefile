@@ -3,11 +3,10 @@
 .PHONY: all
 all: example.html example.png
 
-AD = ../bin/ad
 DEPS = ../bin/ad
 
 example.html: example.yml $(DEPS)
-	../bin/ad < example.yml > example.html
+	../bin/ad -s < example.yml > example.html
 
 example.dot: example.yml $(DEPS)
 	../bin/ad -t dot < example.yml > example.dot

@@ -3,9 +3,11 @@
 package main
 
 import (
+	"encoding/hex"
 	"fmt"
 	"html"
-	"encoding/hex"
+	"io/ioutil"
+	"log"
 )
 
 // Return hex-encoded ID which is URL- and HTML-friendly.
@@ -45,20 +47,41 @@ func outputHtml(doc Dictionary) {
 	}
 }
 
+func readFile(path string) string {
+	if len(path) != 0 {
+		data, err := ioutil.ReadFile(path)
+		if err == nil {
+			log.Fatalf("error: %v", err)
+		}
+		return string(data)
+	} else {
+		return ""
+	}
+}
+
 // Print a single HTML page with basic styling.
-func outputHtmlPage(doc Dictionary) {
+func outputHtmlPage(doc Dictionary, options Options) {
+	escapedTitle := html.EscapeString(options.Title)
 	fmt.Printf(`<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>definitions</title>
-</head>
+<title>%s</title>
+%s</head>
 <body>
-`)
+<h1>%s</h1>%s
+`,
+		escapedTitle,
+		readFile(options.IncludeInHeader),
+		escapedTitle,
+		readFile(options.IncludeBeforeBody),
+	)
 
 	outputHtml(doc)
 
 	fmt.Printf(`
-</body>
-`)
+%s</body>
+`,
+		readFile(options.IncludeAfterBody),
+	)
 }

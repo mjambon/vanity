@@ -53,10 +53,18 @@ type Dictionary struct {
 //
 
 type Options struct {
-	// TODO: find a way to write this monstrosity on multiple lines
+	// TODO: find a way to make these strings readable and cut at 80 columns.
 	OutputFormat string `short:"t" long:"to" default:"html" description:"Specify output format. It can be one of: html (HTML snippet or standalone page), dot (dot format supported by Graphviz)."`
 
 	Standalone bool `short:"s" long:"standalone" description:"Produce a standalone HTML document."`
+
+	Title string `long:"title" default:"Definitions" description:"The document title. Applies to standalone HTML output only."`
+
+	// It would be nice if the following options could be repeated so as to
+	// inject multiple files in one command, like the same options do in pandoc.
+	IncludeInHeader string `short:"H" long:"include-in-header" description:"Include contents of the given file, verbatim, at the end of the HTML <head> section. This is meant for adding CSS styling or Javascript. Applies to standalone HTML output only."`
+	IncludeBeforeBody string `short:"B" long:"include-before-body" description:"Include contents of the given file, verbatim, at the beginning of the HTML <body> section. This is meant for adding introductory material at the beginning of the page. Applies to standalone HTML output only."`
+	IncludeAfterBody string `short:"A" long:"include-after-body" description:"Include contents of the given file, verbatim, at the end of the HTML <body> section. This is meant for adding concluding material at the bottom of the page. Applies to standalone HTML output only."`
 }
 
 var options Options
@@ -69,7 +77,7 @@ func main() {
 		if ok && flagsErr.Type == flags.ErrHelp {
 			os.Exit(0)
 		} else {
-			os.Exit(1)
+			log.Fatalf("error: %v", err)
 		}
 	}
 
@@ -84,7 +92,7 @@ func main() {
 	switch options.OutputFormat {
 	case "html":
 		if options.Standalone {
-			outputHtmlPage(doc)
+			outputHtmlPage(doc, options)
 		} else {
 			outputHtml(doc)
 		}
