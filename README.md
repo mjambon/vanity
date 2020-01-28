@@ -6,8 +6,12 @@ the usefulness of dictionaries in which terms used in definitions
 must either have been already defined or appear in a distinctive
 font.
 
-Example of an HTML document rendered with the tool:
+Example of a glossary rendered with `ad` into an HTML page:
 ![Example](screenshot.png)
+
+The source for this glossary is:
+
+https://github.com/mjambon/ad/blob/46a7c1733fd2297e7436c65d270e7532403755db/examples/complex.yml#L1-L39
 
 Implementation
 --
