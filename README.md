@@ -1,12 +1,15 @@
-Directed Acyclic Dictionary
+Constructive Dictionaries
 ==
 
-This project is a one-off proof-of-concept. Its goal is to evaluate
-the usefulness of dictionaries in which terms used in definitions
-must either have been already defined or appear in a distinctive
-font.
+This project is a proof-of-concept command-line tool for building and
+presenting dictionaries as a strict hierarchy of terms.
 
-Example of a glossary rendered with `ad` into an HTML page:
+The goal is to produce precise technical and philosophical dictionaries and
+glossaries without circular definitions. The solution is to highlight
+and link technical terms, and prevent references to terms that have not
+yet been defined.
+
+Here's an example of a glossary rendered with `ad` into an HTML page:
 ![Example](screenshot.png)
 
 The source for this glossary is:
@@ -71,6 +74,20 @@ conventions to link terms to their definition.
 The Go language was chosen for this implementation as it's relatively
 friendly to external contributors, and it was a good opportunity for
 the author to learn it.
+
+Installation
+--
+
+Check out [DEV.md]. TODO: distribute binaries.
+
+Documentation
+--
+
+Once installed, check out the output of `ad --help`.
+The following output formats are supported:
+
+* HTML snippet or standalone page
+* graph in the dot format understood by Graphviz
 
 Suggested features
 --
