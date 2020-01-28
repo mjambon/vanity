@@ -78,7 +78,7 @@ the author to learn it.
 Installation
 --
 
-Check out [DEV.md]. TODO: distribute binaries.
+Check out [DEV.md](DEV.md). TODO: distribute binaries.
 
 Documentation
 --
