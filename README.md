@@ -78,7 +78,10 @@ the author to learn it.
 Installation
 --
 
-Check out [DEV.md](DEV.md). TODO: distribute binaries.
+Check out the prerequisites in [DEV.md](DEV.md), then build and install with
+`make && make install`.
+
+TODO: distribute binaries.
 
 Documentation
 --
