@@ -1,15 +1,39 @@
 ---
-- term: body
+- term: furniture
   def: >
-    the physical parts necessary and sufficient for an individual to
-    function.
+    collective noun designating all sorts of large but movable items used in
+    indoor settings with a primary non-decorative function.
   syn:
-    - bodies
-- term: head
+    - piece of furniture
+- term: table
   def: >
-    the part of the [body] of animals containing the brain.
+    a [piece of furniture] with a horizontal surface lying above the floor
+    that was designed to support smaller objects.
   syn:
-    - heads
-- term: group
+    - tables
+- term: seat
   def: >
-    a set of [bodies]
+    a [piece of furniture] designed for a single person to sit on it.
+  syn:
+    - seats
+- term: chair
+  def: >
+    a mobile [seat] with a backrest.
+  syn:
+    - chairs
+- term: stool
+  def: >
+    a [seat] without a backrest.
+  syn:
+    - stools
+- term: bench
+  def: >
+    an item designed for several people to sit on, with a hard surface.
+  syn:
+    - benches
+- term: couch
+  def: >
+    a [piece of furniture] designed for multiple people to sit on, with
+    a cushy surface.
+  syn:
+    - couches

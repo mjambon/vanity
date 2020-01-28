@@ -6,6 +6,9 @@ the usefulness of dictionaries in which terms used in definitions
 must either have been already defined or appear in a distinctive
 font.
 
+Example of an HTML document rendered with the tool:
+![Example](screenshot.png)
+
 Implementation
 --
 
