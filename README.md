@@ -99,6 +99,8 @@ Public awareness:
 * Use the tool and publish reports on its usefulness and lessons learned.
 
 Maintenance and distribution:
+* Add expect tests: Run the tool on examples and compare the
+  output with the expected output kept under version control.
 * Compile and distribute binaries for the most popular platforms. Note
   that Go makes this easy by producing static binaries and
   cross-compiling.
