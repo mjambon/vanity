@@ -7,7 +7,7 @@ must either have been already defined or appear in a distinctive
 font.
 
 Example of an HTML document rendered with the tool:
-![Example](screenshot.png)
+<span style="border:1px solid black;">![Example](screenshot.png)</span>
 
 Implementation
 --
