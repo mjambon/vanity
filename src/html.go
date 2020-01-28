@@ -19,7 +19,7 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 	term := def.Term
 	fmt.Printf(`
 <p class="ad-def">
-  <a name="ad-%s"><strong class="ad-term">%s</strong></a>:
+  <a name="ad-%s"></a><strong class="ad-term">%s</strong>:
   <span class="ad-contents">`,
 		html.EscapeString(getTermId(term)),
 		html.EscapeString(term),
