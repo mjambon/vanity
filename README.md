@@ -11,7 +11,48 @@ Example of a glossary rendered with `ad` into an HTML page:
 
 The source for this glossary is:
 
-https://github.com/mjambon/ad/blob/46a7c1733fd2297e7436c65d270e7532403755db/examples/complex.yml#L1-L39
+```yaml
+# A sample glossary.
+---
+- term: furniture
+  def: >
+    collective noun designating all sorts of large but movable items used in
+    indoor settings with a primary non-decorative function.
+  syn:
+    - piece of furniture
+- term: table
+  def: >
+    a [piece of furniture] with a horizontal surface lying above the floor
+    that was designed to support smaller objects.
+  syn:
+    - tables
+- term: seat
+  def: >
+    a [piece of furniture] designed for a single person to sit on it.
+  syn:
+    - seats
+- term: chair
+  def: >
+    a mobile [seat] with a backrest.
+  syn:
+    - chairs
+- term: stool
+  def: >
+    a [seat] without a backrest.
+  syn:
+    - stools
+- term: bench
+  def: >
+    an item designed for several people to sit on, with a hard surface.
+  syn:
+    - benches
+- term: couch
+  def: >
+    a [piece of furniture] designed for multiple people to sit on, with
+    a cushy surface.
+  syn:
+    - couches
+```
 
 Implementation
 --
