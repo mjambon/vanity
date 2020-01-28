@@ -15,6 +15,7 @@ func outputDotHead() {
 	fmt.Printf(
 `digraph G {
   rankdir = TB;
+  bgcolor = "transparent";
 `)
 }
 
