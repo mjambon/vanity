@@ -1,0 +1,65 @@
+#! /usr/bin/env bash
+#
+# Run tests exercising the command-line and compare the output to the expected
+# output.
+#
+set -eu
+
+# If any test fails, this variable is set to 1 and we exit with this status.
+global_status="0"
+
+run() {
+  echo "Running test '$id'."
+
+  # Files that must exist for the test to make sense.
+  cmd="$id".sh
+  e_status="$id".status.expected
+  e_out="$id".out.expected
+  e_err="$id".err.expected
+
+  # Files used to store the test results.
+  status="$id".status
+  out="$id".out
+  err="$id".err
+
+  # Run test in a subshell, capture exit status, don't abort if it fails.
+  (
+    set +e
+    bash "$cmd" > "$out" 2> "$err"
+    echo $? > "$status"
+  )
+
+  # Compare results against expectations.
+  if ! cmp "$e_status" "$status" 2> /dev/null; then
+    cat >&2 <<EOF
+Test '$id' failed: exit status is $(cat "$status")
+but $(cat "$e_status") was expected.
+EOF
+    global_status=1
+  fi
+  if ! cmp "$e_out" "$out" 2> /dev/null; then
+    cat >&2 <<EOF
+Test '$id' failed: actual output differs from expected output:
+EOF
+    diff -u "$e_out" "$out" >&2 || true
+    global_status=1
+  fi
+  if ! cmp "$e_err" "$err" 2> /dev/null; then
+    cat >&2 <<EOF
+Test '$id' failed: actual error output differs from expected error output:
+EOF
+    diff -u "$e_err" "$err" >&2 || true
+    global_status=1
+  fi
+}
+
+main() {
+  ln -sf ../bin/ad
+  for id in $(cat tests.list); do
+    run
+  done
+  exit "$global_status"
+}
+
+main
+

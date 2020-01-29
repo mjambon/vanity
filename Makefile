@@ -11,6 +11,16 @@ build:
 examples: build
 	$(MAKE) -C examples
 
+# Run test suite
+.PHONY: test
+test:
+	$(MAKE) -C test
+
+# Accept new test results
+.PHONY: accept
+accept:
+	$(MAKE) -C test accept
+
 .PHONY: install
 install:
 	sudo mkdir -p /usr/local/bin

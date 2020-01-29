@@ -1,0 +1,16 @@
+digraph G {
+  rankdir = TB;
+  bgcolor = "transparent";
+  "furniture";
+  "table";
+  "table" -> "furniture";
+  "seat";
+  "seat" -> "furniture";
+  "chair";
+  "chair" -> "seat";
+  "stool";
+  "stool" -> "seat";
+  "bench";
+  "couch";
+  "couch" -> "furniture";
+}

@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+#
+# Accept the changes reported by run-tests. This replaces the .expected files.
+#
+set -eu
+
+run() {
+  echo "Accepting changes for test '$id'."
+  cp "$id".status "$id".status.expected
+  cp "$id".out "$id".out.expected
+  cp "$id".err "$id".err.expected
+}
+
+main() {
+  for id in $(cat tests.list); do
+    run
+  done
+}
+
+main
