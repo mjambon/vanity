@@ -92,11 +92,16 @@ The following output formats are supported:
 * HTML snippet or standalone page
 * graph in the dot format understood by Graphviz
 
+TODO: document the input format
+
 Suggested features
 --
 
 Public awareness:
-* Use the tool and publish reports on its usefulness and lessons learned.
+* Write an introductory article explaining why and when this thing can
+  be useful.
+* Use the tool and publish reports on its usefulness and lessons
+  learned.
 
 Maintenance and distribution:
 * Compile and distribute binaries for the most popular platforms. Note
@@ -108,6 +113,7 @@ Maintenance and distribution:
   accepting contributions).
 
 User-facing features:
+* Document the input format.
 * Produce a graph even if it has cycles, as an aid to see what's going
   on.
 * Use topological sorting to implement some of the following features:
