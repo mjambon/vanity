@@ -1,1 +1,3 @@
-./ad -t dot < test.yml
+./ad -t dot \
+  -B before-body.dot \
+  < test.yml

@@ -63,8 +63,20 @@ type Options struct {
 	// It would be nice if the following options could be repeated so as to
 	// inject multiple files in one command, like the same options do in pandoc.
 	IncludeInHeader string `short:"H" long:"include-in-header" description:"Include contents of the given file, verbatim, at the end of the HTML <head> section. This is meant for adding CSS styling or Javascript. Applies to standalone HTML output only."`
-	IncludeBeforeBody string `short:"B" long:"include-before-body" description:"Include contents of the given file, verbatim, at the beginning of the HTML <body> section. This is meant for adding introductory material at the beginning of the page. Applies to standalone HTML output only."`
-	IncludeAfterBody string `short:"A" long:"include-after-body" description:"Include contents of the given file, verbatim, at the end of the HTML <body> section. This is meant for adding concluding material at the bottom of the page. Applies to standalone HTML output only."`
+	IncludeBeforeBody string `short:"B" long:"include-before-body" description:"Include contents of the given file, verbatim, at the beginning of the document's body. Applies to HTML and dot output."`
+	IncludeAfterBody string `short:"A" long:"include-after-body" description:"Include contents of the given file, verbatim, at the end of the HTML <body> section. This is meant for adding concluding material at the bottom of the page. Applies to HTML and dot."`
+}
+
+func readFile(path string) string {
+	if len(path) != 0 {
+		data, err := ioutil.ReadFile(path)
+		if err != nil {
+			log.Fatalf("error: %v", err)
+		}
+		return string(data)
+	} else {
+		return ""
+	}
 }
 
 var options Options
@@ -97,6 +109,6 @@ func main() {
 			outputHtml(doc)
 		}
 	case "dot":
-		outputDot(doc)
+		outputDot(doc, options)
 	}
 }

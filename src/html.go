@@ -6,8 +6,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"html"
-	"io/ioutil"
-	"log"
 )
 
 // Return hex-encoded ID which is URL- and HTML-friendly.
@@ -44,18 +42,6 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 func outputHtml(doc Dictionary) {
 	for _, def := range doc.Sequence {
 		outputHtmlDef(doc.Map, def)
-	}
-}
-
-func readFile(path string) string {
-	if len(path) != 0 {
-		data, err := ioutil.ReadFile(path)
-		if err != nil {
-			log.Fatalf("error: %v", err)
-		}
-		return string(data)
-	} else {
-		return ""
 	}
 }
 

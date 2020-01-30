@@ -1,6 +1,7 @@
 digraph G {
   rankdir = TB;
   bgcolor = "transparent";
+
   "furniture";
   "table";
   "table" -> "furniture";
@@ -13,4 +14,5 @@ digraph G {
   "bench";
   "couch";
   "couch" -> "furniture";
+
 }

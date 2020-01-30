@@ -15,7 +15,6 @@ func outputDotHead() {
 	fmt.Printf(
 `digraph G {
   rankdir = TB;
-  bgcolor = "transparent";
 `)
 }
 
@@ -56,10 +55,12 @@ func outputDotDef(defs map[string]Definition, def Definition) {
 	}
 }
 
-func outputDot(doc Dictionary) {
+func outputDot(doc Dictionary, options Options) {
 	outputDotHead()
+	fmt.Printf("%s\n", readFile(options.IncludeBeforeBody));
 	for _, def := range doc.Sequence {
 		outputDotDef(doc.Map, def)
 	}
+	fmt.Printf("%s\n", readFile(options.IncludeAfterBody));
 	outputDotTail()
 }

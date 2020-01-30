@@ -1,12 +1,13 @@
-# Build the 'ad' executable and the examples using 'make'.
+# Build the 'ad' executable using 'make'.
 #
 .PHONY: all
-all: examples
+all: build
 
 .PHONY: build
 build:
 	$(MAKE) -C src build
 
+# Build the examples. Requires 'dot' command from Graphviz.
 .PHONY: examples
 examples: build
 	$(MAKE) -C examples

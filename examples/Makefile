@@ -28,7 +28,9 @@ complex.html: complex.yml $(DEPS)
 	  < complex.yml > complex.html
 
 complex.dot: complex.yml $(DEPS)
-	../bin/ad -t dot < complex.yml > complex.dot
+	../bin/ad -t dot \
+	  --include-before-body=include/before-body.dot \
+	  < complex.yml > complex.dot
 
 complex.png: complex.dot $(DEPS)
 	dot -Tpng complex.dot -o complex.png
