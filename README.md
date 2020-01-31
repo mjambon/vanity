@@ -133,7 +133,7 @@ User-facing features:
   or single-tap on mobile. This would work like the Wikipedia mobile
   app or [Wikiwand](https://www.wikiwand.com/en/Hippopotamus).
 * Export to PDF or whichever format is in
-  demand. [Pandoc](https://pandoc.org/ is) an excellent tool for
+  demand. [Pandoc](https://pandoc.org/) is an excellent tool for
   this. Part of the work would consist in making the original output
   of vanity fully understood by pandoc. Perhaps the best format for
   this isn't HTML but some other language best suited for pandoc input.
