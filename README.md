@@ -9,7 +9,7 @@ glossaries without circular definitions. The solution is to highlight
 and link technical terms, and prevent references to terms that have not
 yet been defined.
 
-Here's an example of a glossary rendered with `ad` into an HTML page:
+Here's an example of a glossary rendered with `vanity` into an HTML page:
 ![Example](screenshot.png)
 
 The source for this glossary is:
@@ -86,7 +86,7 @@ TODO: distribute binaries.
 Documentation
 --
 
-Once installed, check out the output of `ad --help`.
+Once installed, check out the output of `vanity --help`.
 The following output formats are supported:
 
 * HTML snippet or standalone page
@@ -135,5 +135,5 @@ User-facing features:
 * Export to PDF or whichever format is in
   demand. [Pandoc](https://pandoc.org/ is) an excellent tool for
   this. Part of the work would consist in making the original output
-  of ad fully understood by pandoc. Perhaps the best format for
+  of vanity fully understood by pandoc. Perhaps the best format for
   this isn't HTML but some other language best suited for pandoc input.

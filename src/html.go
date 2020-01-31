@@ -16,16 +16,16 @@ func getTermId(term string) string {
 func outputHtmlDef(defs map[string]Definition, def Definition) {
 	term := def.Term
 	fmt.Printf(`
-<p class="ad-def">
-  <a name="ad-%s"></a><strong class="ad-term">%s</strong>:
-  <span class="ad-contents">`,
+<p class="vanity-def">
+  <a name="vanity-%s"></a><strong class="vanity-term">%s</strong>:
+  <span class="vanity-contents">`,
 		html.EscapeString(getTermId(term)),
 		html.EscapeString(term),
 	)
 	for _, elt := range def.Contents {
 		if elt.Kind == DefinedTerm {
 			term := elt.Text
-			fmt.Printf(`<a href="#ad-%s" class="ad-term-link">%s</a>`,
+			fmt.Printf(`<a href="#vanity-%s" class="vanity-term-link">%s</a>`,
 				html.EscapeString(getTermId(defs[term].Term)),
 				html.EscapeString(term),
 			)

@@ -1,4 +1,4 @@
-# Build the 'ad' executable using 'make'.
+# Build the 'vanity' executable using 'make'.
 #
 .PHONY: all
 all: build
@@ -25,11 +25,11 @@ accept:
 .PHONY: install
 install:
 	sudo mkdir -p /usr/local/bin
-	sudo cp bin/ad /usr/local/bin
+	sudo cp bin/vanity /usr/local/bin
 
 .PHONY: uninstall
 uninstall:
-	sudo rm /usr/local/bin/ad
+	sudo rm /usr/local/bin/vanity
 
 .PHONY: clean
 clean:

@@ -54,7 +54,7 @@ EOF
 }
 
 main() {
-  ln -sf ../bin/ad
+  ln -sf ../bin/vanity
   for id in $(cat tests.list); do
     run
   done

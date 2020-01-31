@@ -1,4 +1,4 @@
 .PHONY: build
 build:
 	go generate
-	go build -o ../bin/ad *.go
+	go build -o ../bin/vanity *.go

@@ -1,3 +1,3 @@
-./ad -t dot \
+./vanity -t dot \
   -B before-body.dot \
   < test.yml

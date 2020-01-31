@@ -1,1 +1,1 @@
-./ad < test.yml
+./vanity < test.yml

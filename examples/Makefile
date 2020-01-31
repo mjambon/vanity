@@ -3,15 +3,15 @@
 .PHONY: all
 all: simple.html simple.png complex.html complex.png
 
-DEPS = ../bin/ad
+DEPS = ../bin/vanity
 
 ### A simple example. Exercises few options, relying on defaults.
 
 simple.html: simple.yml $(DEPS)
-	../bin/ad -s < simple.yml > simple.html
+	../bin/vanity -s < simple.yml > simple.html
 
 simple.dot: simple.yml $(DEPS)
-	../bin/ad -t dot < simple.yml > simple.dot
+	../bin/vanity -t dot < simple.yml > simple.dot
 
 # Render graph. Needs 'dot' program, normally from a 'graphviz' package.
 simple.png: simple.dot $(DEPS)
@@ -20,7 +20,7 @@ simple.png: simple.dot $(DEPS)
 ### A complex example. Tries to demonstrate most available features.
 
 complex.html: complex.yml $(DEPS)
-	../bin/ad -s \
+	../bin/vanity -s \
 	  --title='Glossary' \
 	  --include-in-header=include/in-header.html \
 	  --include-before-body=include/before-body.html \
@@ -28,7 +28,7 @@ complex.html: complex.yml $(DEPS)
 	  < complex.yml > complex.html
 
 complex.dot: complex.yml $(DEPS)
-	../bin/ad -t dot \
+	../bin/vanity -t dot \
 	  --include-before-body=include/before-body.dot \
 	  < complex.yml > complex.dot
 
