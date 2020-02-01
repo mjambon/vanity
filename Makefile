@@ -9,10 +9,10 @@ build:
 
 .PHONY: release
 release:
-	@echo "Building release binaries."
+	@echo "Building release binaries. Reading version from VERSION file."
 	$(MAKE) -C src release
 	@echo "Don't forget to tag the git commit:"
-	@echo "  git tag `cat VERSION`"
+	@echo "  git tag v`cat VERSION`"
 	@echo "  git push origin master --tags"
 	@echo "Then create a new release on Github and upload the binaries."
 
