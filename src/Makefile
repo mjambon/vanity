@@ -1,3 +1,9 @@
+# Build for local platform
 .PHONY: build
 build:
-	go build -o ../bin/vanity *.go
+	./build
+
+# Build for several popular platforms
+.PHONY: release
+release:
+	./build release

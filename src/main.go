@@ -6,6 +6,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -53,6 +54,8 @@ type Dictionary struct {
 //
 
 type Options struct {
+	Version bool `short:"v" long:"version" description:"Print version and exit."`
+
 	// TODO: find a way to make these strings readable and cut at 80 columns.
 	OutputFormat string `short:"t" long:"to" default:"html" description:"Specify output format. It can be one of: html (HTML snippet or standalone page), dot (dot format supported by Graphviz)."`
 
@@ -91,6 +94,11 @@ func main() {
 		} else {
 			log.Fatalf("error: %v", err)
 		}
+	}
+
+	if options.Version {
+		fmt.Printf("%s\n", version)
+		os.Exit(0)
 	}
 
 	// Load data from stdin because it's simpler. Could read from file as well

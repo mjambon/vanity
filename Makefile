@@ -7,6 +7,15 @@ all: build
 build:
 	$(MAKE) -C src build
 
+.PHONY: release
+release:
+	@echo "Building release binaries."
+	$(MAKE) -C src release
+	@echo "Don't forget to tag the git commit:"
+	@echo "  git tag `cat VERSION`"
+	@echo "  git push origin master --tags"
+	@echo "Then create a new release on Github and upload the binaries."
+
 # Build the examples. Requires 'dot' command from Graphviz.
 .PHONY: examples
 examples: build
