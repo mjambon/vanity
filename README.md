@@ -1,33 +1,26 @@
 Vanity
 ==
 
-term
-definition
-technical term
-glossary
-dictionary
+Introduction
+--
 
-why?
-- technical terms borrowed from everyday use need precise definitions
-- dictionary definitions pointing to each other are not useful
-- visually comparing technical terms used by different authors may be
-  useful
+What is intuition? What are emotions? These are the type of questions
+that are often asked by those in the field of artificial
+cognition. Each author has their own model of cognition, but tend to
+reuse many common words while giving them narrower meanings. The meaning
+of words such as "intuition" or "emotion" require proper definitions.
+For ease of communication, these definitions benefit from brevity and
+from a clear view of how they relate to each other. This is what this
+project proposes to solve.
 
-what?
-- practice
-- language
-- program
+This project offers three things:
 
-for whom?
--> useful to those concerned with the mechanization of cognition
-
-This project is a proof-of-concept command-line tool for building and
-presenting dictionaries as a strict hierarchy of terms.
-
-The goal is to produce precise technical and philosophical dictionaries and
-glossaries without circular definitions. The solution is to highlight
-and link technical terms, and prevent references to terms that have not
-yet been defined.
+1. Recommendations for defining technical terms, and in particular the
+   avoidance of mutually-recursive definitions.
+2. A machine-readable, human-readable format for structuring
+   glossaries.
+3. A command-line program called `vanity` for formatting a glossary
+   into an HTML document or a graph of terms.
 
 Example
 --
@@ -142,12 +135,12 @@ The commands for producing these results can be found in
 Implementation
 --
 
-This proof-of-concept is implemented as a command-line program that
+`vanity` is implemented as a command-line program that
 reads a dictionary in source form, checks its validity, and produces a
 readable document.
 
-The input is a list of term definitions. The YAML syntax was chosen as
-it accommodates text better than JSON and is more readable than
+The input is a list of term definitions. The yaml syntax was chosen as
+it accommodates text better than json and is more readable than
 XML. Structured data such as lists of synonyms can easily be added
 without extending the syntax. The only originality is in the markup
 language used in the body of the definitions, which uses its own
@@ -279,3 +272,11 @@ User-facing features:
   this. Part of the work would consist in making the original output
   of vanity fully understood by pandoc. Perhaps the best format for
   this isn't HTML but some other language best suited for pandoc input.
+
+Project status
+--
+
+I won't develop the `vanity` tool further because it works well enough
+for me, the original author. The project is up for adoption if anyone
+is interested in adding features, reviewing suggestions, pull
+requests, etc.
