@@ -1,5 +1,25 @@
-Constructive Dictionaries
+Vanity
 ==
+
+term
+definition
+technical term
+glossary
+dictionary
+
+why?
+- technical terms borrowed from everyday use need precise definitions
+- dictionary definitions pointing to each other are not useful
+- visually comparing technical terms used by different authors may be
+  useful
+
+what?
+- practice
+- language
+- program
+
+for whom?
+-> useful to those concerned with the mechanization of cognition
 
 This project is a proof-of-concept command-line tool for building and
 presenting dictionaries as a strict hierarchy of terms.
@@ -9,53 +29,104 @@ glossaries without circular definitions. The solution is to highlight
 and link technical terms, and prevent references to terms that have not
 yet been defined.
 
-Here's an example of a glossary rendered with `vanity` into an HTML page:
-![Example](screenshot.png)
-
 The source for this glossary is:
 
 ```yaml
-# A sample glossary.
+# Glossary of terms used by the vanity project.
 ---
-- term: furniture
+- term: term
   def: >
-    collective noun designating all sorts of large but movable items used in
-    indoor settings with a primary non-decorative function.
+    a word or sequence of words with whose meaning depends on the context.
   syn:
-    - piece of furniture
-- term: table
+    - terms
+- term: definition
   def: >
-    a [piece of furniture] with a horizontal surface lying above the floor
-    that was designed to support smaller objects.
+    a textual description of the meaning or meanings of a [term].
   syn:
-    - tables
-- term: seat
+    - definitions
+- term: technical term
   def: >
-    a [piece of furniture] designed for a single person to sit on it.
+    a [term] with a fixed meaning within a field of study. Such [terms] may be
+    formatted differently than ordinary [terms] to indicate that they should
+    be interpreted as a [technical term].
   syn:
-    - seats
-- term: chair
+    - technical terms
+- term: dictionary
   def: >
-    a mobile [seat] with a backrest.
-  syn:
-    - chairs
-- term: stool
+    a set of [terms] and their [definitions].
+- term: glossary
   def: >
-    a [seat] without a backrest.
+    a [dictionary] of [technical terms].
   syn:
-    - stools
-- term: bench
+    - glossaries
+- term: graph
   def: >
-    an item designed for several people to sit on, with a hard surface.
-  syn:
-    - benches
-- term: couch
+    a graph in the sense of graph theory, that is a set of nodes and
+    a set of edges connecting nodes.
+- term: DAG
   def: >
-    a [piece of furniture] designed for multiple people to sit on, with
-    a cushy surface.
-  syn:
-    - couches
+    [DAG] is the usual abbreviation for a directed acyclic [graph] in graph
+    theory. Each edge is an arrow connecting two nodes. In a [DAG], following
+    the edges starting from any node guarantees that eventually we'll reach
+    a node that has no outgoing edges.
+- term: constructive glossary
+  def: >
+    a [glossary] which forms a [DAG] of [technical terms].
+    For each [technical term], there is a unique node A. For each
+    reference to a [technical term] B in the [definition] of A,
+    there is an edge AB in the [DAG].
 ```
+
+The output is:
+
+<p class="vanity-def">
+  <a name="vanity-7465726d"></a><strong class="vanity-term">term</strong>:
+  <span class="vanity-contents">a word or sequence of words with whose meaning depends on the context.
+</span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-646566696e6974696f6e"></a><strong class="vanity-term">definition</strong>:
+  <span class="vanity-contents">a textual description of the meaning or meanings of a <a href="#vanity-7465726d" class="vanity-term-link">term</a>.
+</span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-746563686e6963616c207465726d"></a><strong class="vanity-term">technical term</strong>:
+  <span class="vanity-contents">a <a href="#vanity-7465726d" class="vanity-term-link">term</a> with a fixed meaning within a field of study. Such <a href="#vanity-7465726d" class="vanity-term-link">terms</a> may be formatted differently than ordinary <a href="#vanity-7465726d" class="vanity-term-link">terms</a> to indicate that they should be interpreted as a <a href="#vanity-746563686e6963616c207465726d" class="vanity-term-link">technical term</a>.
+</span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-64696374696f6e617279"></a><strong class="vanity-term">dictionary</strong>:
+  <span class="vanity-contents">a set of <a href="#vanity-7465726d" class="vanity-term-link">terms</a> and their <a href="#vanity-646566696e6974696f6e" class="vanity-term-link">definitions</a>.
+</span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-676c6f7373617279"></a><strong class="vanity-term">glossary</strong>:
+  <span class="vanity-contents">a <a href="#vanity-64696374696f6e617279" class="vanity-term-link">dictionary</a> of <a href="#vanity-746563686e6963616c207465726d" class="vanity-term-link">technical terms</a>.
+</span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-6772617068"></a><strong class="vanity-term">graph</strong>:
+  <span class="vanity-contents">a graph in the sense of graph theory, that is a set of nodes and a set of edges connecting nodes.
+</span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-444147"></a><strong class="vanity-term">DAG</strong>:
+  <span class="vanity-contents"><a href="#vanity-444147" class="vanity-term-link">DAG</a> is the usual abbreviation for a directed acyclic <a href="#vanity-6772617068" class="vanity-term-link">graph</a> in graph theory. Each edge is an arrow connecting two nodes. In a <a href="#vanity-444147" class="vanity-term-link">DAG</a>, following the edges starting from any node guarantees that eventually we&#39;ll reach a node that has no outgoing edges.
+</span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-636f6e73747275637469766520676c6f7373617279"></a><strong class="vanity-term">constructive glossary</strong>:
+  <span class="vanity-contents">a <a href="#vanity-676c6f7373617279" class="vanity-term-link">glossary</a> which forms a <a href="#vanity-444147" class="vanity-term-link">DAG</a> of <a href="#vanity-746563686e6963616c207465726d" class="vanity-term-link">technical terms</a>. For each <a href="#vanity-746563686e6963616c207465726d" class="vanity-term-link">technical term</a>, there is a unique node A. For each reference to a <a href="#vanity-746563686e6963616c207465726d" class="vanity-term-link">technical term</a> B in the <a href="#vanity-646566696e6974696f6e" class="vanity-term-link">definition</a> of A, there is an edge AB in the <a href="#vanity-444147" class="vanity-term-link">DAG</a>.
+</span>
+</p>
+
 
 Implementation
 --
@@ -156,7 +227,7 @@ $ vanity < glossary.yml > glossary.html
 error: definition for term 'French fries' uses undefined term: 'potato'.
 ```
 
-Suggested features
+Ideas for future contributions
 --
 
 Public awareness:

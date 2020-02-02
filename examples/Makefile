@@ -1,7 +1,7 @@
 # Build the example HTML document and a PNG graph of terms using 'make'.
 #
 .PHONY: all
-all: simple.html simple.png complex.html complex.png
+all: simple.html simple.png complex.html complex.png vanity.html vanity.png
 
 DEPS = ../bin/vanity
 
@@ -34,3 +34,15 @@ complex.dot: complex.yml $(DEPS)
 
 complex.png: complex.dot $(DEPS)
 	dot -Tpng complex.dot -o complex.png
+
+### Dogfooding
+
+vanity.html: vanity.yml $(DEPS)
+	../bin/vanity < vanity.yml > vanity.html
+
+vanity.dot: vanity.yml $(DEPS)
+	../bin/vanity -t dot < vanity.yml > vanity.dot
+
+# Render graph. Needs 'dot' program, normally from a 'graphviz' package.
+vanity.png: vanity.dot $(DEPS)
+	dot -Tpng vanity.dot -o vanity.png
