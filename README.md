@@ -11,7 +11,7 @@ so as some kind of heresy.
 
 However, some of us actively work toward the mechanization of
 cognition. We assign specific, non-mystical meanings to these
-terms. At least to some them. It's often better to reuse a term like
+terms. At least to some of them. It's often better to reuse a term like
 "imagination" and give it a precise sense, rather than making up a new
 word that doesn't evoke anything.
 
