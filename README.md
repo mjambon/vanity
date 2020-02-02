@@ -7,8 +7,9 @@ Introduction
 What is intuition? What are emotions? These are the type of questions
 that are often asked by those in the field of artificial
 cognition. Each author has their own model of cognition, but tend to
-reuse many common words while giving them narrower meanings. The meaning
-of words such as "intuition" or "emotion" require proper definitions.
+reuse many common words while giving them narrower meanings.
+Words such as "intuition" or "emotion" require proper definitions
+before thinking of creating machines that exhibit such properties.
 For ease of communication, these definitions benefit from brevity and
 from a clear view of how they relate to each other. This is what this
 project proposes to solve.
