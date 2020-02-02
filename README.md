@@ -277,6 +277,6 @@ Project status
 --
 
 I won't develop the `vanity` tool further because it works
-well enough for me, the [original author](@mjambon). The project is up
+well enough for me, the original author (@mjambon). The project is up
 for adoption if anyone is interested in adding features, reviewing
 suggestions, pull requests, etc.
