@@ -1,4 +1,4 @@
-ad -s \
+./vanity -s \
   --title='Glossary' \
   --include-in-header=in-header.html \
   --include-before-body=before-body.html \
