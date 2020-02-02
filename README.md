@@ -6,14 +6,12 @@ Introduction
 
 What is intuition? What are emotions? Such questions are often asked
 by those in the field of artificial cognition. Each author has their
-own model of cognition but tend to reuse such common words
-with fuzzy meanings rather than creating new ones.
-Words such as "intuition" or "emotion" require proper definitions
-before even thinking of creating machines that exhibit such
-properties.
+own model of how artificial minds might work but we tend to reuse
+common words with fuzzy meanings rather than creating new ones.
+Properties like "intuition" or "emotion" require proper definitions
+before even thinking of creating machines that have them.
 For ease of communication, these definitions benefit from brevity and
-from a clear view of how they relate to each other. This is what this
-project proposes to solve.
+from a clear hierarchy. This is what this project proposes to solve.
 
 This project offers three things:
 
