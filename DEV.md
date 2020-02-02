@@ -1,3 +1,23 @@
+Installation from source
+==
+
+If you have all the prerequisites (see next section), then you can
+compile and install the program as follows:
+```
+$ make && make install
+```
+
+Testing is done with
+```
+$ make test
+```
+
+Examples with more dependencies are available under
+[`examples/`](examples) and can be built with:
+```
+$ make examples
+```
+
 Getting started with Go
 ==
 
