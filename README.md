@@ -1,8 +1,6 @@
 Vanity
 ==
 
-[Binary downloads](https://github.com/mjambon/vanity/releases)
-
 Introduction
 --
 
@@ -23,6 +21,18 @@ This project offers three things:
    glossaries.
 3. A command-line program called `vanity` for formatting a glossary
    into an HTML document or a graph of terms.
+
+Installation
+--
+
+[Download](https://github.com/mjambon/vanity/releases) a
+statically-linked executable for your platform.
+
+If your platform is not in there or if you want to try a development
+version, you'll have to build it from source. We have some
+instructions in [DEV.md](DEV.md). After installing the prerequisites,
+you can build and install `vanity` for your Unixy platform using
+`make && make install`.
 
 Example
 --
@@ -134,37 +144,6 @@ The [source yaml for this glossary](examples/vanity.yml) is:
 The commands for producing these results can be found in
 [examples/Makefile](examples/Makefile).
 
-Implementation
---
-
-`vanity` is implemented as a command-line program that
-reads a dictionary in source form, checks its validity, and produces a
-readable document.
-
-The input is a list of term definitions. The yaml syntax was chosen as
-it accommodates text better than json and is more readable than
-XML. Structured data such as lists of synonyms can easily be added
-without extending the syntax. The only originality is in the markup
-language used in the body of the definitions, which uses its own
-conventions to link terms to their definition.
-
-The Go language was chosen for this implementation as it's relatively
-friendly to external contributors, and it was a good opportunity for
-me author to learn it. The ability to distribute binaries with no
-runtime dependencies and for various platforms is also a big plus.
-
-Installation
---
-
-[Download](https://github.com/mjambon/vanity/releases) a
-statically-linked executable for your platform.
-
-If your platform is not in there or if you want to try a development
-version, you'll have to build it from source. We have some
-instructions in [DEV.md](DEV.md). After installing the prerequisites,
-you can build and install `vanity` for your Unixy platform using
-`make && make install`.
-
 Documentation
 --
 
@@ -233,6 +212,25 @@ In that case we get an error message:
 $ vanity < glossary.yml > glossary.html
 error: definition for term 'French fries' uses undefined term: 'potato'.
 ```
+
+Implementation
+--
+
+`vanity` is implemented as a command-line program that
+reads a dictionary in source form, checks its validity, and produces a
+readable document.
+
+The input is a list of term definitions. The yaml syntax was chosen as
+it accommodates text better than json and is more readable than
+XML. Structured data such as lists of synonyms can easily be added
+without extending the syntax. The only originality is in the markup
+language used in the body of the definitions, which uses its own
+conventions to link terms to their definition.
+
+The Go language was chosen for this implementation as it's relatively
+friendly to external contributors, and it was a good opportunity for
+me author to learn it. The ability to distribute binaries with no
+runtime dependencies and for various platforms is also a big plus.
 
 Ideas for future contributions
 --
