@@ -155,7 +155,8 @@ conventions to link terms to their definition.
 
 The Go language was chosen for this implementation as it's relatively
 friendly to external contributors, and it was a good opportunity for
-the author to learn it.
+me author to learn it. The ability to distribute binaries with no
+runtime dependencies for various platforms is also a big plus.
 
 Installation
 --
