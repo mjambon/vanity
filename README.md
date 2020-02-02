@@ -1,6 +1,4 @@
-[![CircleCI](https://circleci.com/gh/mjambon/vanity.svg?style=svg)](https://circleci.com/gh/mjambon/vanity)
-
-Vanity
+Vanity [![CircleCI](https://circleci.com/gh/mjambon/vanity.svg?style=shield)](https://circleci.com/gh/mjambon/vanity)
 ==
 
 Introduction
