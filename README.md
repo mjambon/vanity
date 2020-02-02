@@ -5,8 +5,8 @@ Introduction
 --
 
 What is intuition? What are emotions? Most people are confused by
-those terms, and typically treat them as taboos. Not only they won't
-try to seriously define them, but also they will treat attempts to do
+those terms, and typically treat them as taboos. Not only won't they
+try to seriously define them, but they will also treat attempts to do
 so as some kind of heresy.
 
 However, some of us actively work toward the mechanization of
