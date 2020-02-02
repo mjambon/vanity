@@ -29,55 +29,8 @@ glossaries without circular definitions. The solution is to highlight
 and link technical terms, and prevent references to terms that have not
 yet been defined.
 
-The source for this glossary is:
-
-```yaml
-# Glossary of terms used by the vanity project.
----
-- term: term
-  def: >
-    a word or sequence of words with whose meaning depends on the context.
-  syn:
-    - terms
-- term: definition
-  def: >
-    a textual description of the meaning or meanings of a [term].
-  syn:
-    - definitions
-- term: technical term
-  def: >
-    a [term] with a fixed meaning within a field of study. Such [terms] may be
-    formatted differently than ordinary [terms] to indicate that they should
-    be interpreted as a [technical term].
-  syn:
-    - technical terms
-- term: dictionary
-  def: >
-    a set of [terms] and their [definitions].
-- term: glossary
-  def: >
-    a [dictionary] of [technical terms].
-  syn:
-    - glossaries
-- term: graph
-  def: >
-    a graph in the sense of graph theory, that is a set of nodes and
-    a set of edges connecting nodes.
-- term: DAG
-  def: >
-    [DAG] is the usual abbreviation for a directed acyclic [graph] in graph
-    theory. Each edge is an arrow connecting two nodes. In a [DAG], following
-    the edges starting from any node guarantees that eventually we'll reach
-    a node that has no outgoing edges.
-- term: constructive glossary
-  def: >
-    a [glossary] which forms a [DAG] of [technical terms].
-    For each [technical term], there is a unique node A. For each
-    reference to a [technical term] B in the [definition] of A,
-    there is an edge AB in the [DAG].
-```
-
-The output is:
+The following glossary was formatted by `vanity` from
+[examples/vanity.yml](examples/vanity.yml) and inserted into this readme:
 
 <p class="vanity-def">
   <a name="vanity-7465726d"></a><strong class="vanity-term">term</strong>:
@@ -127,6 +80,53 @@ The output is:
 </span>
 </p>
 
+The [source yaml for this glossary](examples/vanity.yml) is:
+
+```yaml
+# Glossary of terms used by the vanity project.
+---
+- term: term
+  def: >
+    a word or sequence of words with whose meaning depends on the context.
+  syn:
+    - terms
+- term: definition
+  def: >
+    a textual description of the meaning or meanings of a [term].
+  syn:
+    - definitions
+- term: technical term
+  def: >
+    a [term] with a fixed meaning within a field of study. Such [terms] may be
+    formatted differently than ordinary [terms] to indicate that they should
+    be interpreted as a [technical term].
+  syn:
+    - technical terms
+- term: dictionary
+  def: >
+    a set of [terms] and their [definitions].
+- term: glossary
+  def: >
+    a [dictionary] of [technical terms].
+  syn:
+    - glossaries
+- term: graph
+  def: >
+    a graph in the sense of graph theory, that is a set of nodes and
+    a set of edges connecting nodes.
+- term: DAG
+  def: >
+    [DAG] is the usual abbreviation for a directed acyclic [graph] in graph
+    theory. Each edge is an arrow connecting two nodes. In a [DAG], following
+    the edges starting from any node guarantees that eventually we'll reach
+    a node that has no outgoing edges.
+- term: constructive glossary
+  def: >
+    a [glossary] which forms a [DAG] of [technical terms].
+    For each [technical term], there is a unique node A. For each
+    reference to a [technical term] B in the [definition] of A,
+    there is an edge AB in the [DAG].
+```
 
 Implementation
 --
