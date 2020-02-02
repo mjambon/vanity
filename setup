@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+#
+# Install build dependencies.
+#
+# This is made to work in the Docker container used with CircleCI
+# (see .circleci/config.yaml). It may or not work elsewhere.
+#
+set -eu
+
+# Strict requirements for the build
+go get gopkg.in/yaml.v2
+go get github.com/jessevdk/go-flags
+
+# Optional. Needed to build examples/
+sudo apt install graphviz

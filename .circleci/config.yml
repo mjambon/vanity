@@ -20,5 +20,6 @@ jobs:
     working_directory: /go/src/github.com/mjambon/vanity
     steps:
       - checkout
+      - run: make setup
       - run: make
       - run: make test

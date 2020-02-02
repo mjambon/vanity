@@ -7,6 +7,10 @@ all: build
 build:
 	$(MAKE) -C src build
 
+.PHONY: setup
+setup:
+	./setup
+
 .PHONY: release
 release:
 	@echo "Building release binaries. Reading version from VERSION file."
