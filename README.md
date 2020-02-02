@@ -29,6 +29,9 @@ glossaries without circular definitions. The solution is to highlight
 and link technical terms, and prevent references to terms that have not
 yet been defined.
 
+Example
+--
+
 The following glossary was formatted by `vanity` from
 [examples/vanity.yml](examples/vanity.yml) and inserted into this readme:
 
@@ -80,6 +83,11 @@ The following glossary was formatted by `vanity` from
 </span>
 </p>
 
+The graph was exported by `vanity` to the dot format, and then `dot`
+turned it into this image:
+
+![DAG](vanity.png)
+
 The [source yaml for this glossary](examples/vanity.yml) is:
 
 ```yaml
@@ -127,6 +135,9 @@ The [source yaml for this glossary](examples/vanity.yml) is:
     reference to a [technical term] B in the [definition] of A,
     there is an edge AB in the [DAG].
 ```
+
+The commands for producing these results can be found in
+[examples/Makefile](examples/Makefile).
 
 Implementation
 --
