@@ -78,10 +78,14 @@ the author to learn it.
 Installation
 --
 
-Check out the prerequisites in [DEV.md](DEV.md), then build and install with
-`make && make install`.
+[Download](https://github.com/mjambon/vanity/releases) a
+statically-linked executable for your platform.
 
-TODO: distribute binaries.
+If your platform is not in there or if you want to try a development
+version, you'll have to build it from source. We have some
+instructions in [DEV.md](DEV.md). After installing the prerequisites,
+you can build and install `vanity` for your Unixy platform using
+`make && make install`.
 
 Documentation
 --
@@ -92,7 +96,65 @@ The following output formats are supported:
 * HTML snippet or standalone page
 * graph in the dot format understood by Graphviz
 
-TODO: document the input format
+Input format reference
+--
+
+A valid input document is a [yaml](https://yaml.org/) document,
+consisting of an ordered list (yaml array) of definitions. Each
+definition has 2 mandatory fields `term` and `def`, and an optional
+field `syn`.
+
+* `term`: string that represents the standard form of the term being
+  defined.
+* `def`: string that holds the definition for the term. Links to other
+  terms are placed within square brackets, such as in
+  `The sky is [cloudy] today.`. Only links to previous definitions
+  or to the current definition are permitted. The text of the link must
+  be a term from a `term` field or one of its synonyms from a `syn`
+  field.
+* `syn`: array of strings that are considered synonyms with the term
+  being defined, in the sense that any reference to a synonym will
+  link to the standard term. This can be used to hold different
+  variations of a word, such as plural forms, gendered forms, plain
+  synonyms, conjugated forms of verbs, etc. (this will become annoying
+  for some languages other than English)
+
+The definitions must be sorted such that all links refer to terms that
+were defined earlier. For example, the following is valid input:
+
+```yaml
+- term: potato
+  def: the edible tuber from the potato plant
+- term: French fries
+  def: deep-fried [potato] chunks
+```
+
+We can add `potatoes` as a synonym of `potato` and link to `potatoes`
+instead of `potato`:
+
+```yaml
+- term: potato
+  def: the edible tuber from the potato plant
+  syn:
+    - potatoes
+- term: French fries
+  def: deep-fried [potatoes]
+```
+
+Order matters. The following is illegal:
+
+```yaml
+- term: French fries
+  def: deep-fried [potato] chunks
+- term: potato
+  def: the edible tuber from the potato plant
+```
+
+In that case we get an error message:
+```sh
+$ vanity < glossary.yml > glossary.html
+error: definition for term 'French fries' uses undefined term: 'potato'.
+```
 
 Suggested features
 --
@@ -104,9 +166,6 @@ Public awareness:
   learned.
 
 Maintenance and distribution:
-* Compile and distribute binaries for the most popular platforms. Note
-  that Go makes this easy by producing static binaries and
-  cross-compiling.
 * Add automatic testing using one of Travis, CircleCI, Github Actions,
   etc.
 * Add contribution guidelines (highly recommended to do before
