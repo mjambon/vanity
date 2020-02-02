@@ -4,16 +4,19 @@ Vanity [![CircleCI](https://circleci.com/gh/mjambon/vanity.svg?style=shield)](ht
 Introduction
 --
 
-What is intuition? What are emotions? Such questions are often asked
-by those in the field of artificial cognition. Each author has their
-own model of how artificial minds might work but we tend to reuse
-common words with fuzzy meanings rather than creating new ones.
-Properties like "intuition" or "emotion" require proper definitions
-before even thinking of creating machines that have them.
-For ease of communication, these definitions benefit from brevity and
-from a clear hierarchy. This is what this project proposes to solve.
+What is intuition? What are emotions? Most people are confused by
+those terms, and typically treat them as taboos. Not only they won't
+try to seriously define them, but also they will treat attempts to do
+so as some kind of heresy.
 
-This project offers three things:
+However, some of us actively work toward the mechanization of
+cognition. We assign specific, non-mystical meanings to these
+terms. At least to some them. It's often better to reuse a term like
+"imagination" and give it a precise sense, rather than making up a new
+word that doesn't evoke anything.
+
+Disambiguating and communicating the precise meaning of technical
+terms is the goal of this project. It offers three things:
 
 1. Recommendations for defining technical terms, and in particular the
    avoidance of mutually-recursive definitions.
