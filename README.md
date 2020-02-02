@@ -1,6 +1,8 @@
 Vanity
 ==
 
+[Binary downloads](https://github.com/mjambon/vanity/releases)
+
 Introduction
 --
 
