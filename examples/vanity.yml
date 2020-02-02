@@ -2,7 +2,7 @@
 ---
 - term: term
   def: >
-    a word or sequence of words with whose meaning depends on the context.
+    a word or sequence of words whose meaning depends on the context.
   syn:
     - terms
 - term: definition

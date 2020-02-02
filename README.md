@@ -37,7 +37,7 @@ The following glossary was formatted by `vanity` from
 
 <p class="vanity-def">
   <a name="vanity-7465726d"></a><strong class="vanity-term">term</strong>:
-  <span class="vanity-contents">a word or sequence of words with whose meaning depends on the context.
+  <span class="vanity-contents">a word or sequence of words whose meaning depends on the context.
 </span>
 </p>
 
@@ -95,7 +95,7 @@ The [source yaml for this glossary](examples/vanity.yml) is:
 ---
 - term: term
   def: >
-    a word or sequence of words with whose meaning depends on the context.
+    a word or sequence of words whose meaning depends on the context.
   syn:
     - terms
 - term: definition
@@ -156,7 +156,7 @@ conventions to link terms to their definition.
 The Go language was chosen for this implementation as it's relatively
 friendly to external contributors, and it was a good opportunity for
 me author to learn it. The ability to distribute binaries with no
-runtime dependencies for various platforms is also a big plus.
+runtime dependencies and for various platforms is also a big plus.
 
 Installation
 --
