@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mjambon/vanity.svg?style=svg)](https://circleci.com/gh/mjambon/vanity)
+
 Vanity
 ==
 
