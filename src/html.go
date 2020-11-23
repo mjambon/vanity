@@ -33,9 +33,20 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 			fmt.Printf(`%s`, html.EscapeString(elt.Text))
 		}
 	}
-	fmt.Printf(`</span>
+	fmt.Printf(`
+  </span>
 </p>
 `)
+	image := def.Image
+	if image != "" {
+		esc_img := html.EscapeString(image)
+		fmt.Printf(`
+  <div class="vanity-image-div">
+    <a href="img/%s"><img src="img/%s" class="vanity-image-img"/></a>
+  </div>
+`,
+			esc_img, esc_img)
+	}
 }
 
 // Print HTML to be included in a document to stdout.

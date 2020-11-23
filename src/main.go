@@ -35,6 +35,7 @@ type Definition struct {
 	Term string
 	Contents []DefContentsElt
 	Synonyms []string
+	Image string
 }
 
 type Dictionary struct {

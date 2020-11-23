@@ -12,6 +12,7 @@ type rawDefinition struct {
 	Term string // the term being defined
 	Contents string `yaml:"def,flow"` // the definition using special markup
 	Synonyms []string `yaml:"syn,omitempty"` // synonyms for the term
+	Image string `yaml:"img,omitempty"` // image file name matching [a-z0-9_.-]+
 }
 
 // A document is an ordered list of definitions. Since Yaml doesn't guarantee
@@ -90,6 +91,17 @@ func checkDuplicates(
 	}
 }
 
+func validateImageName(name string) {
+	matched, err := regexp.MatchString("[a-z0-9._-]+", name)
+	if err != nil {
+		log.Fatalf("error: cannot validate image name %v: %v", name, err)
+	} else {
+		if !matched {
+			log.Fatalf("error: invalid image name %v", name)
+		}
+	}
+}
+
 func loadData(data string) (doc Dictionary) {
 	seq := []Definition{}
 	rawDoc := loadYamlData(data)
@@ -97,10 +109,15 @@ func loadData(data string) (doc Dictionary) {
 	for _, rawDef := range rawDoc {
 		contents := parseDefContents(rawDef.Contents)
 		term := rawDef.Term
+		image := rawDef.Image
+		if image != "" {
+			validateImageName(image)
+		}
 		def := Definition{
 			Term: term,
 			Contents: contents,
 			Synonyms: rawDef.Synonyms,
+			Image: image,
 		}
 		checkDuplicates(term, defs, def.Synonyms)
 
