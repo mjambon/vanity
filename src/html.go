@@ -25,8 +25,9 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 	for _, elt := range def.Contents {
 		if elt.Kind == DefinedTerm {
 			term := elt.Text
+			normalizedTerm := elt.NormalizedText
 			fmt.Printf(`<a href="#vanity-%s" class="vanity-term-link">%s</a>`,
-				html.EscapeString(getTermId(defs[term].Term)),
+				html.EscapeString(getTermId(defs[normalizedTerm].Term)),
 				html.EscapeString(term),
 			)
 		} else {
@@ -78,6 +79,7 @@ func outputHtmlPage(doc Dictionary, options Options) {
 
 	fmt.Printf(`
 %s</body>
+</html>
 `,
 		readFile(options.IncludeAfterBody),
 	)

@@ -2,17 +2,21 @@ digraph G {
   rankdir = TB;
   bgcolor = "transparent";
 
-  "furniture";
-  "table";
+  "furniture" [label="furniture"];
+  "table" [label="table"];
   "table" -> "furniture";
-  "seat";
+  "seat" [label="seat"];
   "seat" -> "furniture";
-  "chair";
+  "chair" [label="chair"];
   "chair" -> "seat";
-  "stool";
+  "stool" [label="stool"];
   "stool" -> "seat";
-  "bench";
-  "couch";
+  "bench" [label="bench"];
+  "couch" [label="couch"];
   "couch" -> "furniture";
+  "ipad" [label="iPad"];
+  "ipad" -> "couch";
+  "apple" [label="Apple"];
+  "apple" -> "ipad";
 
 }

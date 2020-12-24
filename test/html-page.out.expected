@@ -121,6 +121,20 @@ are guaranteed to have been defined earlier.
   </span>
 </p>
 
+<p class="vanity-def">
+  <a name="vanity-69506164"></a><strong class="vanity-term">iPad</strong>:
+  <span class="vanity-contents"><a href="#vanity-636f756368" class="vanity-term-link">Couch</a>. <a href="#vanity-636f756368" class="vanity-term-link">Couches</a>. That&#39;s all the iPad is for.
+
+  </span>
+</p>
+
+<p class="vanity-def">
+  <a name="vanity-4170706c65"></a><strong class="vanity-term">Apple</strong>:
+  <span class="vanity-contents">the maker of the <a href="#vanity-69506164" class="vanity-term-link">ipad</a>.
+
+  </span>
+</p>
+
 <p>
   Here's the directed acyclic graph (DAG) representing all the terms:
 </p>
@@ -128,3 +142,4 @@ are guaranteed to have been defined earlier.
   <a href="complex.png"><img src="complex.png"></a>
 </p>
 </body>
+</html>

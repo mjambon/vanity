@@ -38,17 +38,23 @@ func quoteDotString(s string) string {
 }
 
 func outputDotDef(defs map[string]Definition, def Definition) {
-	term := def.Term
-	fmt.Printf("  %s;\n", quoteDotString(term));
+	srcTerm := def.Term
+	srcNormalizedTerm := def.NormalizedTerm
+	fmt.Printf(
+		"  %s [label=%s];\n",
+		quoteDotString(srcNormalizedTerm),
+		quoteDotString(srcTerm),
+	);
 	edges := make(map[string]bool)  // for detecting duplicate outgoing edges
 	for _, elt := range def.Contents {
 		if elt.Kind == DefinedTerm {
-			baseTerm := defs[elt.Text].Term
-			if baseTerm != term && !edges[baseTerm] {
-				edges[baseTerm] = true
+			dstDef := defs[elt.NormalizedText]
+			dstNormalizedTerm := dstDef.NormalizedTerm
+			if dstNormalizedTerm != srcNormalizedTerm && !edges[dstNormalizedTerm] {
+				edges[dstNormalizedTerm] = true
 				fmt.Printf("  %s -> %s;\n",
-					quoteDotString(term),
-					quoteDotString(baseTerm),
+					quoteDotString(srcNormalizedTerm),
+					quoteDotString(dstNormalizedTerm),
 				)
 			}
 		}

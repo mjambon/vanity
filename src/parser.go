@@ -6,6 +6,7 @@ import (
 	"log"
 	"gopkg.in/yaml.v2"
 	"regexp"
+	"strings"
 )
 
 type rawDefinition struct {
@@ -19,6 +20,10 @@ type rawDefinition struct {
 // the order of fields within a map, the document is a list of definitions
 // rather than a map from terms to definitions.
 type rawDocument []rawDefinition
+
+func normalizeText(s string) string {
+	return strings.ToLower(s)
+}
 
 // An ugly and simple parser to extract terms enclosed within brackets.
 // There is no way to express literal square brackets.
@@ -35,15 +40,18 @@ func parseDefContents(s string) []DefContentsElt {
 	res := []DefContentsElt{}
 	for _, token := range tokens {
 		if token[0] == '[' {
+			text := token[1:len(token)-1]
 			elt := DefContentsElt{
 				Kind: DefinedTerm,
-				Text: token[1:len(token)-1],
+				Text: text,
+				NormalizedText: normalizeText(text),
 			}
 			res = append(res, elt)
 		} else {
 			elt := DefContentsElt{
 				Kind: Text,
 				Text: token,
+				NormalizedText: normalizeText(token),
 			}
 			res = append(res, elt)
 		}
@@ -62,7 +70,7 @@ func loadYamlData(data string) (doc rawDocument) {
 func checkDef(defs map[string]Definition, def Definition) {
 	for _, elt := range def.Contents {
 		if elt.Kind == DefinedTerm {
-			_, ok := defs[elt.Text]
+			_, ok := defs[elt.NormalizedText]
 			if !ok {
 				log.Fatalf(
 					"error: definition for term '%s' uses undefined term: '%s'.",
@@ -113,17 +121,23 @@ func loadData(data string) (doc Dictionary) {
 		if image != "" {
 			validateImageName(image)
 		}
+		normalizedTerm := normalizeText(term)
+		normalizedSynonyms := make([]string, len(rawDef.Synonyms))
+		for i, orig := range rawDef.Synonyms {
+			normalizedSynonyms[i] = normalizeText(orig)
+		}
 		def := Definition{
 			Term: term,
+			NormalizedTerm: normalizedTerm,
 			Contents: contents,
-			Synonyms: rawDef.Synonyms,
+			NormalizedSynonyms: normalizedSynonyms,
 			Image: image,
 		}
-		checkDuplicates(term, defs, def.Synonyms)
+		checkDuplicates(term, defs, def.NormalizedSynonyms)
 
 		// allow term (and its synonyms) in its own definition
-		defs[term] = def
-		for _, syn := range def.Synonyms {
+		defs[normalizedTerm] = def
+		for _, syn := range def.NormalizedSynonyms {
 			defs[syn] = def
 		}
 

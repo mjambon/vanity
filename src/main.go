@@ -29,12 +29,14 @@ const (
 type DefContentsElt struct {
 	Kind EltKind
 	Text string
+	NormalizedText string
 }
 
 type Definition struct {
 	Term string
+	NormalizedTerm string
 	Contents []DefContentsElt
-	Synonyms []string
+	NormalizedSynonyms []string
 	Image string
 }
 
