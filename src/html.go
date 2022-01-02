@@ -13,6 +13,13 @@ func getTermId(term string) string {
 	return hex.EncodeToString([]byte(term))
 }
 
+func outputHtmlTermLink(linkText string, normalizedTerm string) {
+	fmt.Printf(`<a href="#vanity-%s" class="vanity-term-link">%s</a>`,
+		html.EscapeString(getTermId(normalizedTerm)),
+		html.EscapeString(linkText),
+	)
+}
+
 func outputHtmlDef(defs map[string]Definition, def Definition) {
 	term := def.Term
 	fmt.Printf(`
@@ -24,12 +31,7 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 	)
 	for _, elt := range def.Contents {
 		if elt.Kind == DefinedTerm {
-			term := elt.Text
-			normalizedTerm := elt.NormalizedText
-			fmt.Printf(`<a href="#vanity-%s" class="vanity-term-link">%s</a>`,
-				html.EscapeString(getTermId(defs[normalizedTerm].Term)),
-				html.EscapeString(term),
-			)
+			outputHtmlTermLink(elt.Text, defs[elt.NormalizedText].Term)
 		} else {
 			fmt.Printf(`%s`, html.EscapeString(elt.Text))
 		}
@@ -51,9 +53,15 @@ func outputHtmlDef(defs map[string]Definition, def Definition) {
 }
 
 // Print HTML to be included in a document to stdout.
-func outputHtml(doc Dictionary) {
+func outputHtml(doc Dictionary, options Options) {
+	if options.IndexPlacement == "before" {
+		outputIndex(doc)
+	}
 	for _, def := range doc.Sequence {
 		outputHtmlDef(doc.Map, def)
+	}
+	if options.IndexPlacement == "after" {
+		outputIndex(doc)
 	}
 }
 
@@ -75,7 +83,7 @@ func outputHtmlPage(doc Dictionary, options Options) {
 		readFile(options.IncludeBeforeBody),
 	)
 
-	outputHtml(doc)
+	outputHtml(doc, options)
 
 	fmt.Printf(`
 %s</body>

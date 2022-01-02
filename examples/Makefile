@@ -22,6 +22,7 @@ simple.png: simple.dot $(DEPS)
 complex.html: complex.yml $(DEPS)
 	../bin/vanity -s \
 	  --title='Glossary' \
+	  --index-placement='before' \
 	  --include-in-header=include/in-header.html \
 	  --include-before-body=include/before-body.html \
 	  --include-after-body=include/after-body.html \

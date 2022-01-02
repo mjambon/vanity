@@ -66,6 +66,8 @@ type Options struct {
 
 	Title string `long:"title" default:"Definitions" description:"The document title. Applies to standalone HTML output only."`
 
+	IndexPlacement string `long:"index-placement" default:"none" description:"Where to place the index, i.e. the list of defined terms with links to their definitions. Valid values are: 'none' (default), 'before', 'after'."`
+
 	// It would be nice if the following options could be repeated so as to
 	// inject multiple files in one command, like the same options do in pandoc.
 	IncludeInHeader string `short:"H" long:"include-in-header" description:"Include contents of the given file, verbatim, at the end of the HTML <head> section. This is meant for adding CSS styling or Javascript. Applies to standalone HTML output only."`
@@ -117,7 +119,7 @@ func main() {
 		if options.Standalone {
 			outputHtmlPage(doc, options)
 		} else {
-			outputHtml(doc)
+			outputHtml(doc, options)
 		}
 	case "dot":
 		outputDot(doc, options)
