@@ -8,6 +8,7 @@
 set -eu
 
 # Strict requirements for the build
+go mod init mjambon.com/vanity
 go get gopkg.in/yaml.v3
 go get github.com/jessevdk/go-flags
 
