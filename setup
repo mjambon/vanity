@@ -8,7 +8,7 @@
 set -eu
 
 # Strict requirements for the build
-go get gopkg.in/yaml.v2
+go get gopkg.in/yaml.v3
 go get github.com/jessevdk/go-flags
 
 # Optional. Needed to build examples/
